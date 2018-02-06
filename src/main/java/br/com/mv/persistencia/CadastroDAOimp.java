@@ -28,6 +28,7 @@ public class CadastroDAOimp implements Cadastro {
 			transaction.commit();
 			return true;
 		} catch (HibernateException e) {
+			transaction.rollback();
 			e.printStackTrace();
 		} finally {
 			session.close();

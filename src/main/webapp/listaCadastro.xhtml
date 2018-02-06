@@ -21,7 +21,7 @@
 			<h:commandButton value="Cadastrar" />
 		</h:panelGrid>
 		<hr />
-		<h:dataTable value="#{cadastro.listaPessoa}" var="pessoa"
+		<h:dataTable value="#{cadastro.listarPessoa}" var="pessoa"
 			border="1" cellspacing="0" cellpadding="2" id="table">
 			<h:column>
 				<f:facet name="header">id</f:facet>
@@ -37,11 +37,11 @@
 			</h:column>
 			<h:column>
 				<f:facet name="header">idade:</f:facet>
-				<h:outputText value="#{pessoa.dataNascimento}" />
+				<h:outputText value="#{cadastro.idadePessoa(pessoa)}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">Quantidade de telefone:</f:facet>
-				<h:outputText value="#{pessoa.telefone.length}" />
+				<h:outputText value="#{cadastro.sizeTel(pessoa)}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">Ações</f:facet>
