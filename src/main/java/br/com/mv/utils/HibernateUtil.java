@@ -1,4 +1,4 @@
-package br.gov.mv.utils;
+package br.com.mv.utils;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 

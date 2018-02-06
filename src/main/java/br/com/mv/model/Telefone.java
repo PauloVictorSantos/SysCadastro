@@ -6,12 +6,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="telefone")
+@Table(name = "telefone")
 public class Telefone implements Serializable {
 	/**
 	 * 
@@ -20,32 +18,45 @@ public class Telefone implements Serializable {
 	private Long id;
 	private String ddd;
 	private String numero;
+
+	public Telefone(String ddd, String numero) {
+		super();
+		this.ddd = ddd;
+		this.numero = numero;
+	}
 	
+	public Telefone(){
+		super();
+	}
+
 	@Id
 	@GeneratedValue
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	@Column(length=3, nullable=false)
+
+	@Column(length = 3, nullable = false)
 	public String getDdd() {
 		return ddd;
 	}
+
 	public void setDdd(String ddd) {
 		this.ddd = ddd;
 	}
-	
-	@Column(length=10, nullable=false)
+
+	@Column(length = 10, nullable = false)
 	public String getNumero() {
 		return numero;
 	}
+
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -55,6 +66,7 @@ public class Telefone implements Serializable {
 		result = prime * result + ((numero == null) ? 0 : numero.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -81,9 +93,5 @@ public class Telefone implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
-	
+
 }

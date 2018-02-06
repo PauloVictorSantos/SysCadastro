@@ -1,0 +1,54 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<title>Listagem de Pessoas</title>
+</h:head>
+<h:body>
+
+	<h:form>
+		<h:panelGrid columns="2">
+			<f:facet name="header">
+				<h:outputText value="Dados para cadastro" />
+			</f:facet>
+			<h:outputLabel value="Nome:" />
+			<h:inputText value="#{cadastro.pessoa.nome}" />
+			<h:outputLabel value="Cpf:" />
+			<h:inputText value="#{cadastro.pessoa.cpf}" />
+			<h:commandButton value="Pesquisar" action="#{cadastro.salvar}" />
+			<h:commandButton value="Cadastrar" />
+		</h:panelGrid>
+		<hr />
+		<h:dataTable value="#{cadastro.listaPessoa}" var="pessoa"
+			border="1" cellspacing="0" cellpadding="2" id="table">
+			<h:column>
+				<f:facet name="header">id</f:facet>
+				<h:outputText value="#{pessoa.id}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Nome</f:facet>
+				<h:outputText value="#{pessoa.nome}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">CPF:</f:facet>
+				<h:outputText value="#{pessoa.cpf}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">idade:</f:facet>
+				<h:outputText value="#{pessoa.dataNascimento}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Quantidade de telefone:</f:facet>
+				<h:outputText value="#{pessoa.telefone.length}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Ações</f:facet>
+				
+			</h:column>
+		</h:dataTable>
+
+	</h:form>
+</h:body>
+</html>
