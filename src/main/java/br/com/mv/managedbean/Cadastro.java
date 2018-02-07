@@ -1,4 +1,5 @@
 package br.com.mv.managedbean;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,9 +12,9 @@ import br.com.mv.model.Pessoa;
 import br.com.mv.model.Telefone;
 import br.com.mv.persistencia.CadastroDAOimp;
 
-@ManagedBean(name="cadastro")
+@ManagedBean(name = "cadastro")
 @ViewScoped
-public class Cadastro implements Serializable{
+public class Cadastro implements Serializable {
 	/**
 	 * 
 	 */
@@ -23,75 +24,81 @@ public class Cadastro implements Serializable{
 	private String ddd;
 	private String numero;
 	List<Telefone> telefoneList = new ArrayList<>();
-	CadastroDAOimp cadastroDAOimp;
-	
-	
-	public Cadastro(){
+	private CadastroDAOimp cadastroDAOimp;
+	private Pessoa pessoaSelecio;
+
+	public Pessoa getPessoaSelecio() {
+		return pessoaSelecio;
+	}
+
+	public void setPessoaSelecio(Pessoa pessoaSelecio) {
+		this.pessoaSelecio = pessoaSelecio;
+	}
+
+	public Cadastro() {
 		this.pessoa = new Pessoa();
 	}
+
 	public Pessoa getPessoa() {
 		return pessoa;
 	}
+
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
 	}
+
 	public Telefone getTelefone() {
 		return telefone;
 	}
+
 	public void setTelefone(Telefone telefone) {
 		this.telefone = telefone;
 	}
+
 	public String getDdd() {
 		return ddd;
 	}
+
 	public void setDdd(String ddd) {
 		this.ddd = ddd;
 	}
+
 	public String getNumero() {
 		return numero;
 	}
+
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
+
 	public List<Telefone> getTelefoneList() {
 		return telefoneList;
 	}
+
 	public void setTelefoneList(List<Telefone> telefoneList) {
 		this.telefoneList = telefoneList;
 	}
-	
-	public void adicionarTelefone(){
+
+	public void adicionarTelefone() {
 		telefone = new Telefone(this.ddd, this.numero);
 		telefoneList.add(telefone);
 	}
-	
-	public void selecionarLinha(Telefone telefone){
+
+	public void selecionarLinha(Telefone telefone) {
 		telefoneList.remove(telefone);
 	}
-	
-	public void salvar(){
+
+	public void salvar() {
 		cadastroDAOimp = new CadastroDAOimp();
 		pessoa.setTelefone(telefoneList);
-		
-		if(cadastroDAOimp.inserirCadastro(telefone, pessoa)){
+
+		if (cadastroDAOimp.inserirCadastro(telefone, pessoa)) {
 			System.out.println("funcionou");
-		}else{
+		} else {
 			System.out.println("não funcionou");
 		}
 	}
+
 	
-	public List<Pessoa> getlistarPessoa(){
-		cadastroDAOimp = new CadastroDAOimp();
-		return cadastroDAOimp.listarPessoa();
-	}
-	
-	public int sizeTel(Pessoa p){
-		return p.getTelefone().size();
-	}
-	
-	public int idadePessoa(Pessoa p){
-		return (new Date().getYear() -  p.getDataNascimento().getYear());
-	}
-	
-	
+
 }

@@ -8,5 +8,6 @@ import br.com.mv.model.Telefone;
 public interface Cadastro {
 	public boolean inserirCadastro( Telefone telefone, Pessoa pessoa);
 	public List<Pessoa> listarPessoa();
-	
+	public List<Pessoa> procurarPessoa(Pessoa p);
+	public boolean excluirPessoa(Pessoa p);
 }

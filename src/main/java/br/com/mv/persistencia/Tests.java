@@ -35,13 +35,16 @@ public class Tests {
 //			System.out.println("pifou");
 //		}
 		
-		java.util.List<Pessoa> list = cadastroDAOimp.listarPessoa();
-		
-		for(Pessoa p: list){
-			System.out.println(p.getNome());
-			System.out.println(p.getTelefone().size());
-		}
-		
+//		java.util.List<Pessoa> list = cadastroDAOimp.listarPessoa();
+//		
+//		for(Pessoa p: list){
+//			System.out.println(p.getNome());
+//			System.out.println(p.getTelefone().size());
+//		}
+//		
+//		
+		pessoa.setId(Long.parseLong("16"));
+		cadastroDAOimp.excluirPessoa(pessoa);
 	}
 
 }
