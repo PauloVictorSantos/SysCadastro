@@ -81,6 +81,7 @@ public class CadastroDAOimp implements Cadastro {
 			session = HibernateUtil.getSessionFactory().openSession();
 			transaction = session.beginTransaction();
 			session.delete(session.get(Pessoa.class, p.getId()));
+			
 			transaction.commit();
 			retorno = true;
 		} catch (HibernateException e) {

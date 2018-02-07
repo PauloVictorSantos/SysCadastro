@@ -50,14 +50,10 @@
 						target="#{listar.pessoaSelecio}" />
 				</h:commandLink>
 				|
-				<h:commandLink value="alterar" action="#{cadastro.Alterar}">
+				<h:commandLink value="alterar" action="#{cadastro.Alterar}" >
 					<f:setPropertyActionListener value="#{pessoa.id}"
 						target="#{cadastro.idSelecionado}" />
 				</h:commandLink>
-				<h:button action="#{cadastro.Alterar}" title="Editar"
-					outcome="/atualizar">
-					<f:param name="id" value="#{pessoa.id}" />
-				</h:button>
 			</h:column>
 		</h:dataTable>
 

@@ -5,11 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 
-import br.com.mv.dao.CadastroDao;
 import br.com.mv.model.Pessoa;
 import br.com.mv.model.Telefone;
 import br.com.mv.persistencia.CadastroDAOimp;
@@ -38,6 +35,7 @@ public class Cadastro implements Serializable {
 	public void setIdSelecionado(Long idSelecionado) {
 		this.idSelecionado = idSelecionado;
 	}
+
 	public Pessoa getPessoaSelecio() {
 		return pessoaSelecio;
 	}
@@ -116,8 +114,17 @@ public class Cadastro implements Serializable {
 		System.out.println(this.getIdSelecionado() + " di pessoa " + pessoa.getId());
 		cadastroDao = new CadastroDAOimp();
 		Pessoa p = cadastroDao.pegarPessoa(this.getIdSelecionado());
-		if(p!=null){
-			
+		if (p != null) {
+			this.pessoa.setId(p.getId());
+			this.pessoa.setNome(p.getNome());
+			this.pessoa.setEmail(p.getEmail());
+			this.pessoa.setCpf(p.getCpf());
+			this.pessoa.setDataNascimento(p.getDataNascimento());
+			for (Telefone telefone : p.getTelefone()) {
+				telefone = new Telefone(telefone.getDdd(), telefone.getNumero());
+				telefoneList.add(telefone);
+				this.pessoa.setTelefone(telefoneList);
+			}
 		}
 		System.out.println(this.getIdSelecionado() + " di pessoa " + p.getId());
 		return "atualizar";
