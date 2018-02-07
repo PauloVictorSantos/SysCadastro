@@ -1,4 +1,4 @@
-package br.com.mv.persistencia;
+package br.com.mv.dao;
 
 import java.util.List;
 

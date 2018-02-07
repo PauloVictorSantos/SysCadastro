@@ -7,9 +7,9 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import br.com.mv.dao.CadastroDAOimp;
 import br.com.mv.model.Pessoa;
 import br.com.mv.model.Telefone;
-import br.com.mv.persistencia.CadastroDAOimp;
 
 @ManagedBean(name = "cadastro")
 @SessionScoped
