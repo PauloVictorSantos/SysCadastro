@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
 import br.com.mv.model.Pessoa;
@@ -21,10 +22,11 @@ public class ListarPessoa implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Pessoa pessoa;
 	private Telefone telefone;
-	private CadastroDAOimp cadastroDAOimp;
+	private CadastroDAOimp cadastroDao;
 	private Pessoa pessoaSelecio;
 	private String nome;
 	private String cpf;
+	
 
 	public String getNome() {
 		return nome;
@@ -71,18 +73,18 @@ public class ListarPessoa implements Serializable {
 	}
 
 	public List<Pessoa> getlistarPessoa() {
-		cadastroDAOimp = new CadastroDAOimp();
+		cadastroDao = new CadastroDAOimp();
 		if (this.getNome() == null || this.getCpf() == null)
-			return cadastroDAOimp.listarPessoa();
+			return cadastroDao.listarPessoa();
 		pessoa.setNome(this.getNome());
 		pessoa.setCpf(this.getCpf());
-		return cadastroDAOimp.procurarPessoa(pessoa);
+		return cadastroDao.procurarPessoa(pessoa);
 	}
 
 	public void excluir() {
-		cadastroDAOimp = new CadastroDAOimp();
+		cadastroDao = new CadastroDAOimp();
 		try {
-			cadastroDAOimp.excluirPessoa(pessoaSelecio);
+			cadastroDao.excluirPessoa(pessoaSelecio);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -100,4 +102,6 @@ public class ListarPessoa implements Serializable {
 	public int idadePessoa(Pessoa p) {
 		return (new Date().getYear() - p.getDataNascimento().getYear());
 	}
+
+	
 }

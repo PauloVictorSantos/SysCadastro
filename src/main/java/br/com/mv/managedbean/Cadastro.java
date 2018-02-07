@@ -2,18 +2,20 @@ package br.com.mv.managedbean;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
+import br.com.mv.dao.CadastroDao;
 import br.com.mv.model.Pessoa;
 import br.com.mv.model.Telefone;
 import br.com.mv.persistencia.CadastroDAOimp;
 
 @ManagedBean(name = "cadastro")
-@ViewScoped
+@SessionScoped
 public class Cadastro implements Serializable {
 	/**
 	 * 
@@ -24,9 +26,18 @@ public class Cadastro implements Serializable {
 	private String ddd;
 	private String numero;
 	List<Telefone> telefoneList = new ArrayList<>();
-	private CadastroDAOimp cadastroDAOimp;
+	private CadastroDAOimp cadastroDao;
 	private Pessoa pessoaSelecio;
+	private Long idSelecionado;
+	private Pessoa p;
 
+	public Long getIdSelecionado() {
+		return idSelecionado;
+	}
+
+	public void setIdSelecionado(Long idSelecionado) {
+		this.idSelecionado = idSelecionado;
+	}
 	public Pessoa getPessoaSelecio() {
 		return pessoaSelecio;
 	}
@@ -89,18 +100,26 @@ public class Cadastro implements Serializable {
 	}
 
 	public void salvar() {
-		cadastroDAOimp = new CadastroDAOimp();
+		cadastroDao = new CadastroDAOimp();
 		pessoa.setTelefone(telefoneList);
 
-		if (pessoa.getId()==0) {
-			cadastroDAOimp.inserirCadastro(telefone, pessoa)
+		if (pessoa.getId() == null) {
+			cadastroDao.inserirCadastro(telefone, pessoa);
 			System.out.println("funcionou");
 		} else {
-			cadastroDAOimp.alterarPessoa(pessoa);
-			System.out.println("não funcionou");
+			cadastroDao.alterarPessoa(pessoa);
+			System.out.println("alterou");
 		}
 	}
 
-	
-
+	public String Alterar() {
+		System.out.println(this.getIdSelecionado() + " di pessoa " + pessoa.getId());
+		cadastroDao = new CadastroDAOimp();
+		Pessoa p = cadastroDao.pegarPessoa(this.getIdSelecionado());
+		if(p!=null){
+			
+		}
+		System.out.println(this.getIdSelecionado() + " di pessoa " + p.getId());
+		return "atualizar";
+	}
 }

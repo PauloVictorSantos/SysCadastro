@@ -110,4 +110,19 @@ public class CadastroDAOimp implements Cadastro {
 		return retorno;
 	}
 
+	public Pessoa pegarPessoa(Long d) {
+		Pessoa pessoa = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			transaction = session.beginTransaction();
+			pessoa = (Pessoa) session.get(Pessoa.class, new Long(d));
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return pessoa;
+	}
+
+	
 }
