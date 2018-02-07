@@ -25,6 +25,7 @@ public class ListarPessoa implements Serializable {
 	private Pessoa pessoaSelecio;
 	private String nome;
 	private String cpf;
+
 	public String getNome() {
 		return nome;
 	}
@@ -71,7 +72,7 @@ public class ListarPessoa implements Serializable {
 
 	public List<Pessoa> getlistarPessoa() {
 		cadastroDAOimp = new CadastroDAOimp();
-		if(this.getNome() == null || this.getCpf()== null)
+		if (this.getNome() == null || this.getCpf() == null)
 			return cadastroDAOimp.listarPessoa();
 		pessoa.setNome(this.getNome());
 		pessoa.setCpf(this.getCpf());

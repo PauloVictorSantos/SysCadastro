@@ -92,4 +92,22 @@ public class CadastroDAOimp implements Cadastro {
 		return retorno;
 	}
 
+	@Override
+	public boolean alterarPessoa(Pessoa p) {
+		boolean retorno = false;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			transaction = session.beginTransaction();
+			session.update(p);
+			transaction.commit();
+			retorno = true;
+		} catch (HibernateException e) {
+			transaction.commit();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return retorno;
+	}
+
 }

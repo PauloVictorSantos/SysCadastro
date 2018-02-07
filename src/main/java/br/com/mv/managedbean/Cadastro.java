@@ -92,9 +92,11 @@ public class Cadastro implements Serializable {
 		cadastroDAOimp = new CadastroDAOimp();
 		pessoa.setTelefone(telefoneList);
 
-		if (cadastroDAOimp.inserirCadastro(telefone, pessoa)) {
+		if (pessoa.getId()==0) {
+			cadastroDAOimp.inserirCadastro(telefone, pessoa)
 			System.out.println("funcionou");
 		} else {
+			cadastroDAOimp.alterarPessoa(pessoa);
 			System.out.println("não funcionou");
 		}
 	}
