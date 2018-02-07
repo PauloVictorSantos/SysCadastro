@@ -8,8 +8,9 @@
 </h:head>
 <h:body>
 
-	<h:form>
-		<h:panelGrid columns="2">
+
+	<h:panelGrid columns="2">
+		<h:form>
 			<f:facet name="header">
 				<h:outputText value="Dados para cadastro" />
 			</f:facet>
@@ -19,44 +20,46 @@
 			<h:inputText value="#{listar.cpf}" />
 			<h:commandButton value="Pesquisar" action="#{listar.buscarPessoa}" />
 			<h:commandButton value="Cadastrar" />
-		</h:panelGrid>
-		<hr />
-		<h:dataTable value="#{listar.listarPessoa}" var="pessoa" border="1"
-			cellspacing="0" cellpadding="2" id="table">
-			<h:column>
-				<f:facet name="header">id</f:facet>
-				<h:outputText value="#{pessoa.id}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">Nome</f:facet>
-				<h:outputText value="#{pessoa.nome}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">CPF:</f:facet>
-				<h:outputText value="#{pessoa.cpf}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">idade:</f:facet>
-				<h:outputText value="#{listar.idadePessoa(pessoa)}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">Quantidade de telefone:</f:facet>
-				<h:outputText value="#{listar.sizeTel(pessoa)}" />
-			</h:column>
-			<h:column>
+		</h:form>
+	</h:panelGrid>
+	<hr />
+	<h:dataTable value="#{listar.listarPessoa}" var="pessoa" border="1"
+		cellspacing="0" cellpadding="2" id="table">
+		<h:column>
+			<f:facet name="header">id</f:facet>
+			<h:outputText value="#{pessoa.id}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">Nome</f:facet>
+			<h:outputText value="#{pessoa.nome}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">CPF:</f:facet>
+			<h:outputText value="#{pessoa.cpf}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">idade:</f:facet>
+			<h:outputText value="#{listar.idadePessoa(pessoa)}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">Quantidade de telefone:</f:facet>
+			<h:outputText value="#{listar.sizeTel(pessoa)}" />
+		</h:column>
+
+		<h:column>
+			<h:form>
 				<f:facet name="header">Ações</f:facet>
 				<h:commandLink value="Excluir" action="#{listar.excluir}">
 					<f:setPropertyActionListener value="#{pessoa}"
 						target="#{listar.pessoaSelecio}" />
 				</h:commandLink>
 				|
-				<h:commandLink value="alterar" action="#{cadastro.Alterar}" >
+				<h:commandLink value="alterar" action="#{cadastro.Alterar}">
 					<f:setPropertyActionListener value="#{pessoa.id}"
 						target="#{cadastro.idSelecionado}" />
 				</h:commandLink>
-			</h:column>
-		</h:dataTable>
-
-	</h:form>
+			</h:form>
+		</h:column>
+	</h:dataTable>
 </h:body>
 </html>

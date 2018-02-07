@@ -114,17 +114,22 @@ public class Cadastro implements Serializable {
 		System.out.println(this.getIdSelecionado() + " di pessoa " + pessoa.getId());
 		cadastroDao = new CadastroDAOimp();
 		Pessoa p = cadastroDao.pegarPessoa(this.getIdSelecionado());
+		
 		if (p != null) {
 			this.pessoa.setId(p.getId());
 			this.pessoa.setNome(p.getNome());
 			this.pessoa.setEmail(p.getEmail());
 			this.pessoa.setCpf(p.getCpf());
 			this.pessoa.setDataNascimento(p.getDataNascimento());
-			for (Telefone telefone : p.getTelefone()) {
-				telefone = new Telefone(telefone.getDdd(), telefone.getNumero());
+			telefoneList = new ArrayList<>();
+			for (Telefone telef : p.getTelefone()) {
+				
+				telefone = new Telefone(telef.getDdd(), telef.getNumero());
+				this.setDdd("");
+				this.setNumero("");
 				telefoneList.add(telefone);
-				this.pessoa.setTelefone(telefoneList);
 			}
+			this.pessoa.setTelefone(telefoneList);
 		}
 		System.out.println(this.getIdSelecionado() + " di pessoa " + p.getId());
 		return "atualizar";

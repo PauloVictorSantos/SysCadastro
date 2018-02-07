@@ -48,6 +48,7 @@ public class CadastroDAOimp implements Cadastro {
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {
+			session.flush();
 			session.close();
 		}
 		return list;
@@ -67,6 +68,7 @@ public class CadastroDAOimp implements Cadastro {
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {
+			session.flush();
 			session.close();
 		}
 		return list;
@@ -87,6 +89,7 @@ public class CadastroDAOimp implements Cadastro {
 		} catch (HibernateException e) {
 			transaction.rollback();
 		} finally {
+			session.flush();
 			session.close();
 		}
 
@@ -106,6 +109,7 @@ public class CadastroDAOimp implements Cadastro {
 			transaction.commit();
 			e.printStackTrace();
 		} finally {
+			session.flush();
 			session.close();
 		}
 		return retorno;
@@ -120,6 +124,7 @@ public class CadastroDAOimp implements Cadastro {
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {
+			session.flush();
 			session.close();
 		}
 		return pessoa;
