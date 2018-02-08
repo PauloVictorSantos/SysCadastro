@@ -15,7 +15,9 @@
 			</f:facet>
 			<h:outputLabel value="Nome:" for="nome" />
 			<h:inputText value="#{cadastro.pessoa.nome}" required="true"
-				id="nome" label="nome" />
+				id="nome" label="nome">
+				<f:validateLength minimum="11" maximum="11" />
+			</h:inputText>
 			<h:outputLabel value="Cpf:" for="cpf" />
 			<h:inputText value="#{cadastro.pessoa.cpf}" required="true" id="cpf"
 				label="cpf" />
