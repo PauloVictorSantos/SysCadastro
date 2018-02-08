@@ -7,6 +7,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import br.com.mv.dao.CadastroDAOimp;
 import br.com.mv.model.Pessoa;
@@ -14,7 +15,7 @@ import br.com.mv.model.Telefone;
 
 @ManagedBean(name = "listar")
 @ViewScoped
-public class ListarPessoa implements Serializable {
+public class ListarCadastroMB implements Serializable {
 
 	/**
 	 * 
@@ -51,7 +52,7 @@ public class ListarPessoa implements Serializable {
 		this.pessoaSelecio = pessoaSelecio;
 	}
 
-	public ListarPessoa() {
+	public ListarCadastroMB() {
 		pessoa = new Pessoa();
 	}
 
@@ -103,6 +104,8 @@ public class ListarPessoa implements Serializable {
 	}
 
 	public String cadastrar() {
+		FacesContext.getCurrentInstance().getExternalContext()
+		.invalidateSession();
 		return "cadastro";
 	}
 

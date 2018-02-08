@@ -108,13 +108,14 @@ public class CadastroMB implements Serializable {
 
 		if (pessoa.getId() == null) {
 			cadastroDao.inserirCadastro(telefone, pessoa);
-			this.setMensagem("Cadastro Salvo","Dados do cadastro salvo!");
-			return "listaCadastro";
+			this.setMensagem("Cadastro Salvo!", "Dados do cadastro salvo!");
+
 		} else {
 			cadastroDao.alterarPessoa(pessoa);
-			this.setMensagem("Alterados","Dados alterados!");
-			return "listaCadastro";
+			this.setMensagem("Alterados!", "Dados alterados!");
+
 		}
+		return "listaCadastro";
 	}
 
 	public String Alterar() {
