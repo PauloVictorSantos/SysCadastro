@@ -7,7 +7,7 @@
 </h:head>
 <h:body>
 
-<h:messages  showDetail="true"  />
+	<h:messages showDetail="true" />
 	<h:panelGrid columns="2">
 		<h:form>
 			<f:facet name="header">
@@ -18,11 +18,10 @@
 			<h:outputLabel value="Cpf:" />
 			<h:inputText value="#{listar.cpf}" />
 			<h:commandButton value="Pesquisar" action="#{listar.buscarPessoa}" />
-			</h:form>
-			<h:form>
-			<h:commandButton value="Cadastrar" action="listar.cadastrar"/>
-			</h:form>
 		
+			<h:commandLink value="Cadastrar" action="cadastro"   />
+		</h:form>
+
 	</h:panelGrid>
 	<hr />
 	<h:dataTable value="#{listar.listarPessoa}" var="pessoa" border="1"

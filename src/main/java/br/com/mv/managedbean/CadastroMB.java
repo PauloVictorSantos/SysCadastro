@@ -2,12 +2,15 @@ package br.com.mv.managedbean;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIForm;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
 import br.com.mv.dao.Cadastro;
 import br.com.mv.dao.CadastroDAOimp;
@@ -109,13 +112,16 @@ public class CadastroMB implements Serializable {
 		if (pessoa.getId() == null) {
 			cadastroDao.inserirCadastro(telefone, pessoa);
 			this.setMensagem("Cadastro Salvo!", "Dados do cadastro salvo!");
-
+			this.pessoa = new Pessoa();
+			this.telefone = new Telefone();
+			telefoneList = new ArrayList<>();
 		} else {
 			cadastroDao.alterarPessoa(pessoa);
 			this.setMensagem("Alterados!", "Dados alterados!");
-
+			this.pessoa = new Pessoa();
+			telefoneList = new ArrayList<>();
 		}
-		return "listaCadastro";
+		return "/listaCadastro?faces-redirect=true";
 	}
 
 	public String Alterar() {
@@ -147,6 +153,11 @@ public class CadastroMB implements Serializable {
 		FacesContext.getCurrentInstance().addMessage(null,
 				new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, mensagem));
 	}
-	
-	
+
+	public String cadastrar() {
+
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		return "/cadastro?faces-redirect=true";
+	}
+
 }

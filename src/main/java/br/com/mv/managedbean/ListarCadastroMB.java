@@ -2,6 +2,7 @@ package br.com.mv.managedbean;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -104,7 +105,12 @@ public class ListarCadastroMB implements Serializable {
 	}
 
 	public String cadastrar() {
-		return "cadastro?faces-redirect=true";
+
+		Iterator iter = FacesContext.getCurrentInstance().getExternalContext().getSessionMap().entrySet().iterator();
+		while (iter.hasNext()) {
+			iter.remove();
+		}
+		return "/cadastro?faces-redirect=true";
 	}
 
 }
