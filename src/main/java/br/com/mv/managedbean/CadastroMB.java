@@ -154,10 +154,6 @@ public class CadastroMB implements Serializable {
 				new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, mensagem));
 	}
 
-	public String cadastrar() {
-
-		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		return "/cadastro?faces-redirect=true";
-	}
+	
 
 }
