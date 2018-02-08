@@ -15,12 +15,12 @@
 			</f:facet>
 			<h:outputLabel value="Nome:" for="nome" />
 			<h:inputText value="#{cadastro.pessoa.nome}" required="true"
-				id="nome" label="nome">
-				<f:validateLength minimum="11" maximum="11" />
-			</h:inputText>
+				id="nome" label="nome" />
 			<h:outputLabel value="Cpf:" for="cpf" />
 			<h:inputText value="#{cadastro.pessoa.cpf}" required="true" id="cpf"
-				label="cpf" />
+				label="cpf">
+				<f:validateLength minimum="11" maximum="11" />
+			</h:inputText>
 
 			<h:outputLabel value="Data de Nascimento:" />
 			<h:inputText size="12" value="#{cadastro.pessoa.dataNascimento}"
@@ -30,7 +30,7 @@
 
 			<h:outputLabel value="E-mail:" />
 			<h:inputText value="#{cadastro.pessoa.email}" required="true"
-				label="email" size="40" id="email"
+				label="email"  id="email"
 				requiredMessage="Por favor entre com seu endereço de e-mail"
 				validatorMessage="Email inválido">
 				<f:validateRegex

@@ -1,19 +1,13 @@
 package br.com.mv.dao;
 
 
-import java.awt.List;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Timer;
-
 import br.com.mv.model.Pessoa;
 import br.com.mv.model.Telefone;
 
 public class Tests {
 
 	public static void main(String[] args) {
-		CadastroDAOimp cadastroDAOimp = new CadastroDAOimp();
+		Cadastro cadastroDAOimp = new CadastroDAOimp();
 		Telefone telefone = new Telefone();
 		Pessoa pessoa = new Pessoa();
 //		java.util.List<Telefone> telefonelist = new ArrayList<>();

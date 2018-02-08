@@ -6,14 +6,16 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
+import br.com.mv.dao.Cadastro;
 import br.com.mv.dao.CadastroDAOimp;
 import br.com.mv.model.Pessoa;
 import br.com.mv.model.Telefone;
 
 @ManagedBean(name = "cadastro")
-@SessionScoped
-public class Cadastro implements Serializable {
+@ViewScoped
+public class CadastroMB implements Serializable {
 	/**
 	 * 
 	 */
@@ -23,7 +25,7 @@ public class Cadastro implements Serializable {
 	private String ddd;
 	private String numero;
 	List<Telefone> telefoneList = new ArrayList<>();
-	private CadastroDAOimp cadastroDao;
+	private Cadastro cadastroDao;
 	private Pessoa pessoaSelecio;
 	private Long idSelecionado;
 	private Pessoa p;
@@ -44,7 +46,7 @@ public class Cadastro implements Serializable {
 		this.pessoaSelecio = pessoaSelecio;
 	}
 
-	public Cadastro() {
+	public CadastroMB() {
 		this.pessoa = new Pessoa();
 	}
 
@@ -114,7 +116,7 @@ public class Cadastro implements Serializable {
 		System.out.println(this.getIdSelecionado() + " di pessoa " + pessoa.getId());
 		cadastroDao = new CadastroDAOimp();
 		Pessoa p = cadastroDao.pegarPessoa(this.getIdSelecionado());
-		
+
 		if (p != null) {
 			this.pessoa.setId(p.getId());
 			this.pessoa.setNome(p.getNome());
@@ -123,7 +125,7 @@ public class Cadastro implements Serializable {
 			this.pessoa.setDataNascimento(p.getDataNascimento());
 			telefoneList = new ArrayList<>();
 			for (Telefone telef : p.getTelefone()) {
-				
+
 				telefone = new Telefone(telef.getDdd(), telef.getNumero());
 				this.setDdd("");
 				this.setNumero("");
