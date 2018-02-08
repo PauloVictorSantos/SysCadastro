@@ -140,12 +140,13 @@ public class CadastroMB implements Serializable {
 			this.pessoa.setTelefone(telefoneList);
 		}
 		System.out.println(this.getIdSelecionado() + " di pessoa " + p.getId());
-		return "atualizar";
+		return "atualizar?faces-redirect=true";
 	}
 
 	public void setMensagem(String titulo, String mensagem) {
 		FacesContext.getCurrentInstance().addMessage(null,
 				new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, mensagem));
 	}
-
+	
+	
 }

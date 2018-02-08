@@ -104,9 +104,7 @@ public class ListarCadastroMB implements Serializable {
 	}
 
 	public String cadastrar() {
-		FacesContext.getCurrentInstance().getExternalContext()
-		.invalidateSession();
-		return "cadastro";
+		return "cadastro?faces-redirect=true";
 	}
 
 }

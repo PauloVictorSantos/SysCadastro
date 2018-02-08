@@ -18,8 +18,11 @@
 			<h:outputLabel value="Cpf:" />
 			<h:inputText value="#{listar.cpf}" />
 			<h:commandButton value="Pesquisar" action="#{listar.buscarPessoa}" />
-			<h:commandButton value="Cadastrar" action="listar.cadastrar" />
-		</h:form>
+			</h:form>
+			<h:form>
+			<h:commandButton value="Cadastrar" action="listar.cadastrar"/>
+			</h:form>
+		
 	</h:panelGrid>
 	<hr />
 	<h:dataTable value="#{listar.listarPessoa}" var="pessoa" border="1"

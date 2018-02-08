@@ -5,11 +5,6 @@
 	<navigation-rule>
 		<from-view-id>/listaCadastro.xhtml</from-view-id>
 		<navigation-case>
-			<from-outcome>oi</from-outcome>
-			<to-view-id>/Ola.xhtml</to-view-id>
-
-		</navigation-case>
-		<navigation-case>
 			<from-outcome>cadastro</from-outcome>
 			<to-view-id>/cadastro.xhtml</to-view-id>
 			<redirect />

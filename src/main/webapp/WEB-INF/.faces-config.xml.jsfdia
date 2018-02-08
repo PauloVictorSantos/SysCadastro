@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PROCESS model-entity="JSFProcess">
- <PROCESS-ITEM NAME="rules:#Ola.xhtml" PATH="/Ola.xhtml"
-  SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#cadastro.xhtml" PATH="/cadastro.xhtml"
+  SHAPE="256,177,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#listaCadastro.xhtml"
-  PATH="/listaCadastro.xhtml" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  PATH="/listaCadastro.xhtml" SHAPE="32,129,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#listaCadastro.xhtml:0" NAME="item"
    PATH="/listaCadastro.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="oi::#Ola.xhtml" NAME="output"
-    PATH="/Ola.xhtml" TARGET="rules:#Ola.xhtml" TITLE="oi" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="cadastro::#cadastro.xhtml" NAME="output1"
+   <PROCESS-ITEM-OUTPUT ID="cadastro::#cadastro.xhtml" NAME="output"
     PATH="/cadastro.xhtml" TARGET="rules:#cadastro.xhtml"
     TITLE="cadastro" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#cadastro.xhtml" PATH="/cadastro.xhtml"
-  SHAPE="256,177,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>
