@@ -4,9 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import br.com.mv.dao.Cadastro;
 import br.com.mv.dao.CadastroDAOimp;
@@ -14,7 +15,7 @@ import br.com.mv.model.Pessoa;
 import br.com.mv.model.Telefone;
 
 @ManagedBean(name = "cadastro")
-@ViewScoped
+@SessionScoped
 public class CadastroMB implements Serializable {
 	/**
 	 * 
@@ -93,22 +94,26 @@ public class CadastroMB implements Serializable {
 	public void adicionarTelefone() {
 		telefone = new Telefone(this.ddd, this.numero);
 		telefoneList.add(telefone);
+		this.setDdd("");
+		this.setNumero("");
 	}
 
 	public void selecionarLinha(Telefone telefone) {
 		telefoneList.remove(telefone);
 	}
 
-	public void salvar() {
+	public String salvar() {
 		cadastroDao = new CadastroDAOimp();
 		pessoa.setTelefone(telefoneList);
 
 		if (pessoa.getId() == null) {
 			cadastroDao.inserirCadastro(telefone, pessoa);
-			System.out.println("funcionou");
+			this.setMensagem("Cadastro Salvo","Dados do cadastro salvo!");
+			return "listaCadastro";
 		} else {
 			cadastroDao.alterarPessoa(pessoa);
-			System.out.println("alterou");
+			this.setMensagem("Alterados","Dados alterados!");
+			return "listaCadastro";
 		}
 	}
 
@@ -136,4 +141,10 @@ public class CadastroMB implements Serializable {
 		System.out.println(this.getIdSelecionado() + " di pessoa " + p.getId());
 		return "atualizar";
 	}
+
+	public void setMensagem(String titulo, String mensagem) {
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, mensagem));
+	}
+
 }

@@ -26,7 +26,6 @@ public class ListarPessoa implements Serializable {
 	private Pessoa pessoaSelecio;
 	private String nome;
 	private String cpf;
-	
 
 	public String getNome() {
 		return nome;
@@ -103,5 +102,8 @@ public class ListarPessoa implements Serializable {
 		return (new Date().getYear() - p.getDataNascimento().getYear());
 	}
 
-	
+	public String cadastrar() {
+		return "cadastro";
+	}
+
 }
