@@ -10,6 +10,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
+import br.com.mv.dao.Cadastro;
 import br.com.mv.dao.CadastroDAOimp;
 import br.com.mv.model.Pessoa;
 import br.com.mv.model.Telefone;
@@ -24,7 +25,7 @@ public class ListarCadastroMB implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Pessoa pessoa;
 	private Telefone telefone;
-	private CadastroDAOimp cadastroDao;
+	private Cadastro cadastroDao;
 	private Pessoa pessoaSelecio;
 	private String nome;
 	private String cpf;
@@ -102,15 +103,6 @@ public class ListarCadastroMB implements Serializable {
 
 	public int idadePessoa(Pessoa p) {
 		return (new Date().getYear() - p.getDataNascimento().getYear());
-	}
-
-	public String cadastrar() {
-
-		Iterator iter = FacesContext.getCurrentInstance().getExternalContext().getSessionMap().entrySet().iterator();
-		while (iter.hasNext()) {
-			iter.remove();
-		}
-		return "/cadastro?faces-redirect=true";
 	}
 
 }
