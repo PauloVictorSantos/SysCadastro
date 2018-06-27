@@ -50,6 +50,11 @@
 			<version>2.2.10</version>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>6.2</version>
+		</dependency>
 	</dependencies>
 
 

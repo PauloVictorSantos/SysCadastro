@@ -4,10 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
 
 import br.com.mv.dao.Cadastro;
 import br.com.mv.dao.CadastroDAOimp;
@@ -149,8 +147,11 @@ public class CadastroMB implements Serializable {
 	public void limpar() {
 		if (pessoa != null && telefone != null) {
 			pessoa = new Pessoa();
+			this.setDdd("");
+			this.setNumero("");
 			telefone = new Telefone();
 			telefoneList = new ArrayList<>();
+			
 		}
 	}
 }
