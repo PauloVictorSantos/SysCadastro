@@ -75,6 +75,7 @@
 
 		</h:dataTable>
 		<h:commandButton value="Cadastrar" action="#{cadastro.salvar}" />
+		<h:commandButton value="limpar" actionListener="#{cadastro.limpar}" id="btnForm" process="@form" update="grid"/>
 	</h:form>
 </h:body>
 </html>

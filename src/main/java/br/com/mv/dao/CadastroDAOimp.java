@@ -19,7 +19,9 @@ public class CadastroDAOimp implements Cadastro {
 		boolean retorno = false;
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
-			transaction = session.beginTransaction();
+			transaction = session.getTransaction();
+			transaction.begin();
+			
 			// telefone = new Telefone();
 			// pessoa = new Pessoa();
 			System.out.println(telefone.getDdd());
@@ -43,12 +45,11 @@ public class CadastroDAOimp implements Cadastro {
 
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
-			transaction = session.beginTransaction();
 			list = (List<Pessoa>) session.createQuery(sql).list();
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {
-			session.flush();
+			
 			session.close();
 		}
 		return list;
@@ -62,13 +63,13 @@ public class CadastroDAOimp implements Cadastro {
 
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
-			transaction = session.beginTransaction();
+			
 			list = (List<Pessoa>) session.createQuery(sql).setParameter("cpf", p.getCpf())
 					.setParameter("nome", p.getNome()).list();
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {
-			session.flush();
+			
 			session.close();
 		}
 		return list;
@@ -81,7 +82,8 @@ public class CadastroDAOimp implements Cadastro {
 
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
-			transaction = session.beginTransaction();
+			transaction = session.getTransaction();
+			transaction.begin();
 			session.delete(session.get(Pessoa.class, p.getId()));
 			
 			transaction.commit();
@@ -89,7 +91,7 @@ public class CadastroDAOimp implements Cadastro {
 		} catch (HibernateException e) {
 			transaction.rollback();
 		} finally {
-			session.flush();
+	
 			session.close();
 		}
 
@@ -101,7 +103,8 @@ public class CadastroDAOimp implements Cadastro {
 		boolean retorno = false;
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
-			transaction = session.beginTransaction();
+			transaction = session.getTransaction();
+			transaction.begin();
 			session.update(p);
 			transaction.commit();
 			retorno = true;
@@ -109,7 +112,6 @@ public class CadastroDAOimp implements Cadastro {
 			transaction.commit();
 			e.printStackTrace();
 		} finally {
-			session.flush();
 			session.close();
 		}
 		return retorno;
@@ -119,12 +121,12 @@ public class CadastroDAOimp implements Cadastro {
 		Pessoa pessoa = null;
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
-			transaction = session.beginTransaction();
+			
 			pessoa = (Pessoa) session.get(Pessoa.class, new Long(d));
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {
-			session.flush();
+			
 			session.close();
 		}
 		return pessoa;

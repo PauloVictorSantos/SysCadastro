@@ -15,22 +15,22 @@
 				<h:outputText value="Dados para cadastro" />
 			</f:facet>
 			<h:outputLabel value="Nome:" for="nome" />
-			<h:inputText value="#{cadastro.pessoa.nome}" required="true"
+			<h:inputText value="#{atualizar.pessoa.nome}" required="true"
 				id="nome" label="nome" />
 			<h:outputLabel value="Cpf:" for="cpf" />
-			<h:inputText value="#{cadastro.pessoa.cpf}" required="true" id="cpf"
+			<h:inputText value="#{atualizar.pessoa.cpf}" required="true" id="cpf"
 				label="cpf">
 				<f:validateLength minimum="11" maximum="11" />
 			</h:inputText>
 
 			<h:outputLabel value="Data de Nascimento:" />
-			<h:inputText size="12" value="#{cadastro.pessoa.dataNascimento}"
+			<h:inputText size="12" value="#{atualizar.pessoa.dataNascimento}"
 				label="Data base">
 				<f:convertDateTime pattern="dd/MM/yyyy" />
 			</h:inputText>
 
 			<h:outputLabel value="E-mail:" />
-			<h:inputText value="#{cadastro.pessoa.email}" required="true"
+			<h:inputText value="#{atualizar.pessoa.email}" required="true"
 				label="email" id="email"
 				requiredMessage="Por favor entre com seu endereço de e-mail"
 				validatorMessage="Email inválido">
@@ -44,20 +44,20 @@
 				<h:outputText value="Números de contato" />
 			</f:facet>
 			<h:outputLabel value="DDD:" for="numero" />
-			<h:inputText value="#{cadastro.ddd}"  id="ddd"
+			<h:inputText value="#{atualizar.ddd}"  id="ddd"
 				label="ddd">
 				<f:validateLength minimum="2" maximum="2" />
 			</h:inputText>
 			<h:outputLabel value="Número:" for="numero" />
-			<h:inputText value="#{cadastro.numero}" id="numero" label="numero">
+			<h:inputText value="#{atualizar.numero}" id="numero" label="numero">
 				<f:validateLength minimum="9" maximum="9" />
 			</h:inputText>
 			<h:commandButton value="Adicionar"
-				action="#{cadastro.adicionarTelefone}" />
+				action="#{atualizar.adicionarTelefone}" />
 
 
 		</h:panelGrid>
-		<h:dataTable value="#{cadastro.telefoneList}" var="telefone"
+		<h:dataTable value="#{atualizar.telefoneList}" var="telefone"
 			border="1" cellspacing="0" cellpadding="2" id="table">
 			<h:column>
 				<f:facet name="header">DDD</f:facet>
@@ -70,11 +70,11 @@
 			<h:column>
 				<f:facet name="header">Ações</f:facet>
 				<h:commandLink value="Deletar"
-					action="#{cadastro.selecionarLinha(telefone)}" />
+					action="#{atualizar.selecionarLinha(telefone)}" />
 			</h:column>
 
 		</h:dataTable>
-		<h:commandButton value="Cadastrar" action="#{cadastro.salvar}" />
+		<h:commandButton value="Cadastrar" action="#{atualizar.atualizar}" />
 	</h:form>
 </h:body>
 </html>

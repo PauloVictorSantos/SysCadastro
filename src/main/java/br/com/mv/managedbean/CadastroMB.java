@@ -2,23 +2,21 @@ package br.com.mv.managedbean;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.faces.component.UIForm;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 
 import br.com.mv.dao.Cadastro;
 import br.com.mv.dao.CadastroDAOimp;
 import br.com.mv.model.Pessoa;
 import br.com.mv.model.Telefone;
+import br.com.mv.utils.Util;
 
 @ManagedBean(name = "cadastro")
-@SessionScoped
+@ViewScoped
 public class CadastroMB implements Serializable {
 	/**
 	 * 
@@ -105,55 +103,54 @@ public class CadastroMB implements Serializable {
 		telefoneList.remove(telefone);
 	}
 
-	public String salvar() {
+	public void salvar() {
 		cadastroDao = new CadastroDAOimp();
 		pessoa.setTelefone(telefoneList);
 
 		if (pessoa.getId() == null) {
 			cadastroDao.inserirCadastro(telefone, pessoa);
-			this.setMensagem("Cadastro Salvo!", "Dados do cadastro salvo!");
+			Util.setMensagem("Cadastro Salvo!", "Dados do cadastro salvo!");
 			this.pessoa = new Pessoa();
 			this.telefone = new Telefone();
 			telefoneList = new ArrayList<>();
-		} else {
-			cadastroDao.alterarPessoa(pessoa);
-			this.setMensagem("Alterados!", "Dados alterados!");
-			this.pessoa = new Pessoa();
-			telefoneList = new ArrayList<>();
 		}
-		return "/listaCadastro?faces-redirect=true";
+		
+		limpar();
+		//return "/listaCadastro?faces-redirect=true";
 	}
 
-	public String Alterar() {
-		System.out.println(this.getIdSelecionado() + " di pessoa " + pessoa.getId());
-		cadastroDao = new CadastroDAOimp();
-		Pessoa p = cadastroDao.pegarPessoa(this.getIdSelecionado());
-
-		if (p != null) {
-			this.pessoa.setId(p.getId());
-			this.pessoa.setNome(p.getNome());
-			this.pessoa.setEmail(p.getEmail());
-			this.pessoa.setCpf(p.getCpf());
-			this.pessoa.setDataNascimento(p.getDataNascimento());
-			telefoneList = new ArrayList<>();
-			for (Telefone telef : p.getTelefone()) {
-
-				telefone = new Telefone(telef.getDdd(), telef.getNumero());
-				this.setDdd("");
-				this.setNumero("");
-				telefoneList.add(telefone);
-			}
-			this.pessoa.setTelefone(telefoneList);
-		}
-		System.out.println(this.getIdSelecionado() + " di pessoa " + p.getId());
-		return "atualizar?faces-redirect=true";
-	}
-
-	public void setMensagem(String titulo, String mensagem) {
-		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, mensagem));
-	}
+//	public String Alterar() {
+//		System.out.println(this.getIdSelecionado() + " di pessoa " + pessoa.getId());
+//		cadastroDao = new CadastroDAOimp();
+//		Pessoa p = cadastroDao.pegarPessoa(this.getIdSelecionado());
+//
+//		if (p != null) {
+//			this.pessoa.setId(p.getId());
+//			this.pessoa.setNome(p.getNome());
+//			this.pessoa.setEmail(p.getEmail());
+//			this.pessoa.setCpf(p.getCpf());
+//			this.pessoa.setDataNascimento(p.getDataNascimento());
+//			telefoneList = new ArrayList<>();
+//			for (Telefone telef : p.getTelefone()) {
+//
+//				telefone = new Telefone(telef.getDdd(), telef.getNumero());
+//				this.setDdd("");
+//				this.setNumero("");
+//				telefoneList.add(telefone);
+//			}
+//			this.pessoa.setTelefone(telefoneList);
+//		}
+//		System.out.println(this.getIdSelecionado() + " di pessoa " + p.getId());
+//		return "atualizar?faces-redirect=true";
+//	}
 
 	
 
+	public void limpar() {
+		if (pessoa != null && telefone != null) {
+			pessoa = new Pessoa();
+			telefone = new Telefone();
+			telefoneList = new ArrayList<>();
+		}
+	}
 }
