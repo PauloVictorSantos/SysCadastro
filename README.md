@@ -1,2 +1,2 @@
 # SysCadastro
-A simple CRUD using jsf, JPA, Maven, Hibernate and HQL. 
+A simple CRUD of contact list using jsf, JPA/Hibernate, Maven.
