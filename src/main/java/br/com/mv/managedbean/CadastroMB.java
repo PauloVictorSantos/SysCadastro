@@ -113,34 +113,9 @@ public class CadastroMB implements Serializable {
 			limpar();
 		}
 
-		// return "/listaCadastro?faces-redirect=true";
 	}
 
-	// public String Alterar() {
-	// System.out.println(this.getIdSelecionado() + " di pessoa " +
-	// pessoa.getId());
-	// cadastroDao = new CadastroDAOimp();
-	// Pessoa p = cadastroDao.pegarPessoa(this.getIdSelecionado());
-	//
-	// if (p != null) {
-	// this.pessoa.setId(p.getId());
-	// this.pessoa.setNome(p.getNome());
-	// this.pessoa.setEmail(p.getEmail());
-	// this.pessoa.setCpf(p.getCpf());
-	// this.pessoa.setDataNascimento(p.getDataNascimento());
-	// telefoneList = new ArrayList<>();
-	// for (Telefone telef : p.getTelefone()) {
-	//
-	// telefone = new Telefone(telef.getDdd(), telef.getNumero());
-	// this.setDdd("");
-	// this.setNumero("");
-	// telefoneList.add(telefone);
-	// }
-	// this.pessoa.setTelefone(telefoneList);
-	// }
-	// System.out.println(this.getIdSelecionado() + " di pessoa " + p.getId());
-	// return "atualizar?faces-redirect=true";
-	// }
+	
 
 	public void limpar() {
 		if (pessoa != null && telefone != null) {
