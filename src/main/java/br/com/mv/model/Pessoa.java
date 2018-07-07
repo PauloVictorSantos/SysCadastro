@@ -50,7 +50,7 @@ public class Pessoa implements Serializable {
 		this.nome = nome;
 	}
 	
-	@Column(length=12, nullable=false)
+	@Column(length=20, nullable=false)
 	public String getCpf() {
 		return cpf;
 	}
@@ -77,6 +77,7 @@ public class Pessoa implements Serializable {
 		this.email = email;
 	}
 	
+	//update fetch = FetchType.EAGER for FetchType.LAZY
 	@OneToMany(cascade = javax.persistence.CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_pessoa")
 	public List<Telefone> getTelefone() {

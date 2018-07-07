@@ -1,66 +1,71 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Listagem de Pessoas</title>
 </h:head>
 <h:body>
 
-	<h:messages showDetail="true" />
-	<h:panelGrid columns="2">
+	<p:messages id="messages" showDetail="true" closable="true">
+		<p:autoUpdate />
+	</p:messages>
+	<p:panelGrid columns="2">
 		<h:form>
 			<f:facet name="header">
 				<h:outputText value="Dados para cadastro" />
 			</f:facet>
 			<h:outputLabel value="Nome:" />
-			<h:inputText value="#{listar.nome}" />
-			<h:outputLabel value="Cpf:" />
-			<h:inputText value="#{listar.cpf}" />
-			<h:commandButton value="Pesquisar" action="#{listar.buscarPessoa}" />
-		
-			<h:commandLink value="Cadastrar" action="cadastro"   />
+			<p:inputText value="#{listar.nome}" />
+			<p:outputLabel value="Cpf:" />
+			<p:inputText value="#{listar.cpf}" />
+			<p:commandButton value="Pesquisar" update="list"
+				action="#{listar.buscarPessoa}" />
+
+			<p:commandLink value="Cadastrar" action="cadastro" />
 		</h:form>
 
-	</h:panelGrid>
+	</p:panelGrid>
 	<hr />
-	<h:dataTable value="#{listar.listarPessoa}" var="pessoa" border="1"
-		cellspacing="0" cellpadding="2" id="table">
-		<h:column>
+	<p:dataTable value="#{listar.listarPessoa}" var="pessoa" border="1"
+		cellspacing="0" cellpadding="2" id="list">
+		<p:column>
 			<f:facet name="header">id</f:facet>
 			<h:outputText value="#{pessoa.id}" />
-		</h:column>
-		<h:column>
+		</p:column>
+		<p:column>
 			<f:facet name="header">Nome</f:facet>
 			<h:outputText value="#{pessoa.nome}" />
-		</h:column>
-		<h:column>
+		</p:column>
+		<p:column>
 			<f:facet name="header">CPF:</f:facet>
 			<h:outputText value="#{pessoa.cpf}" />
-		</h:column>
-		<h:column>
+		</p:column>
+		<p:column>
 			<f:facet name="header">idade:</f:facet>
 			<h:outputText value="#{listar.idadePessoa(pessoa)}" />
-		</h:column>
-		<h:column>
+		</p:column>
+		<p:column>
 			<f:facet name="header">Quantidade de telefone:</f:facet>
 			<h:outputText value="#{listar.sizeTel(pessoa)}" />
-		</h:column>
+		</p:column>
 
-		<h:column>
+		<p:column>
 			<h:form>
 				<f:facet name="header">Ações</f:facet>
-				<h:commandLink value="Excluir" action="#{listar.excluir}">
+				<p:commandLink value="Excluir" action="#{listar.excluir}"
+					update="list">
 					<f:setPropertyActionListener value="#{pessoa}"
 						target="#{listar.pessoaSelecio}" />
-				</h:commandLink>
+				</p:commandLink>
 				|
-				<h:commandLink value="alterar" action="#{atualizar.Alterar}">
+				<p:commandLink value="alterar" action="#{atualizar.Alterar}">
 					<f:setPropertyActionListener value="#{pessoa.id}"
 						target="#{atualizar.idSelecionado}" />
-				</h:commandLink>
+				</p:commandLink>
 			</h:form>
-		</h:column>
-	</h:dataTable>
+		</p:column>
+	</p:dataTable>
 </h:body>
 </html>
