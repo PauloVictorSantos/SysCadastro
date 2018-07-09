@@ -77,7 +77,7 @@ public class Pessoa implements Serializable {
 		this.email = email;
 	}
 	
-	//update fetch = FetchType.EAGER for FetchType.LAZY
+	//update fetch = FetchType.EAGER for FetchType.LAZY and use operador new in select to search size of register with the type, learning in JPA/Hibenate Curse 
 	@OneToMany(cascade = javax.persistence.CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_pessoa")
 	public List<Telefone> getTelefone() {

@@ -38,6 +38,7 @@ public class CadastroDAOimp implements Cadastro {
 		return retorno;
 	}
 
+//melhorar a pequisa e usar funcões de agregação, olhar apostilha JPA/Hibernate
 	@Override
 	public List<Pessoa> listarPessoa() {
 		List<Pessoa> list = null;
