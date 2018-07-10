@@ -60,13 +60,13 @@ public class CadastroDAOimp implements Cadastro {
 	@Override
 	public List<Pessoa> procurarPessoa(Pessoa p) {
 		List<Pessoa> list = null;
-		final String sql = "SELECT pessoa FROM Pessoa pessoa WHERE pessoa.cpf= :cpf or pessoa.nome=:nome";
+		final String sql = "SELECT pessoa FROM Pessoa pessoa WHERE pessoa.cpf= :cpf or pessoa.nome like :nome";
 
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			
 			list = (List<Pessoa>) session.createQuery(sql).setParameter("cpf", p.getCpf())
-					.setParameter("nome", p.getNome()).list();
+					.setParameter("nome","%"+ p.getNome()+"%").list();
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {
