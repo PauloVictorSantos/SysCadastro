@@ -43,7 +43,7 @@ public class CadastroMB implements Serializable {
 	}
 
 	public void setPessoaSelecio(Pessoa pessoaSelecio) {
-		this.pessoaSelecio = pessoaSelecio;
+		 this.pessoaSelecio = pessoaSelecio;
 	}
 
 	public CadastroMB() {
@@ -114,8 +114,6 @@ public class CadastroMB implements Serializable {
 		}
 
 	}
-
-	
 
 	public void limpar() {
 		if (pessoa != null && telefone != null) {

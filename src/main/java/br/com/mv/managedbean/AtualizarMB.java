@@ -88,6 +88,10 @@ public class AtualizarMB implements Serializable {
 		this.setNumero("");
 	}
 
+	public void selecionarLinha(Telefone telefone) {
+		telefoneList.remove(telefone);
+	}
+	
 	public String Alterar() {
 		System.out.println(this.getIdSelecionado());
 		// System.out.println(" di pessoa " + pessoa.getId());
