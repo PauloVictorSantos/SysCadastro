@@ -19,7 +19,8 @@
 			<h:outputLabel value="Nome:" />
 			<p:inputText value="#{listar.nome}" />
 			<p:outputLabel value="Cpf:" />
-			<p:inputText value="#{listar.cpf}" />
+			<p:inputMask id="cpf"
+				label="cpf" mask="999.999.999-99" value="#{listar.cpf}" />
 			<p:commandButton value="Pesquisar" update="list"
 				action="#{listar.buscarPessoa}" />
 
