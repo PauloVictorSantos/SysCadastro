@@ -9,20 +9,13 @@
 </h:head>
 <h:body>
 	<header>
-		<h:form>
+		<h:form style="height: 25px;padding-top: 20px; padding-bottom: 20px;">
 			<p:menubar style="margin-top: -20px; margin-bottom: 20px">
 				<p:submenu label="Cadastros">
-					<p:menuitem value="Pessoa" />
-					<p:menuitem value="Lançamento"
-						/>
+					<p:menuitem value="Contatos" action="/cadastro.xhtml?faces-redirect=true"/>
 				</p:submenu>
 				<p:submenu label="Consultas">
-					<p:menuitem value="Pessoas" />
-					<p:menuitem value="Lançamentos"
-						 />
-				</p:submenu>
-				<p:submenu label="Sistema">
-					<p:menuitem value="Sair" />
+					<p:menuitem value="Contatos" action="/listaCadastro.xhtml?faces-redirect=true" />
 				</p:submenu>
 			</p:menubar>
 		</h:form>
