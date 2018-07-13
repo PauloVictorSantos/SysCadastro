@@ -1,79 +1,78 @@
-
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition template="WEB-INF/template/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-		xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<title>atualizar cadastro</title>
-</h:head>
-<h:body>
+	xmlns:p="http://primefaces.org/ui">
 
-<p:messages id="messages" showDetail="true" closable="true">
-		<p:autoUpdate />
-	</p:messages>
-	<h:form>
-		<p:panelGrid columns="2">
-			<f:facet name="header">
-				<h:outputText value="Dados para cadastro" />
-			</f:facet>
-			<h:outputLabel value="Nome:" for="nome" />
-			<p:inputText value="#{atualizar.pessoa.nome}" required="true"
-				id="nome" label="nome" />
-			<h:outputLabel value="Cpf:" for="cpf" />
-		<p:inputMask value="#{atualizar.pessoa.cpf}" required="true" id="cpf"
-				label="cpf" mask="999.999.999-99"/>
+	<ui:define name="titulo">atualizar cadastro</ui:define>
 
-			<p:outputLabel value="Data de Nascimento:" />
-			<p:calendar id="mask" size="12"
-				value="#{atualizar.pessoa.dataNascimento}" pattern="dd/MM/yyyy" />
+	<ui:define name="corpo">
+		<p:messages id="messages" showDetail="true" closable="true">
+			<p:autoUpdate />
+		</p:messages>
+		<h:form>
+			<p:panelGrid columns="2">
+				<f:facet name="header">
+					<h:outputText value="Dados para cadastro" />
+				</f:facet>
+				<h:outputLabel value="Nome:" for="nome" />
+				<p:inputText value="#{atualizar.pessoa.nome}" required="true"
+					id="nome" label="nome" />
+				<h:outputLabel value="Cpf:" for="cpf" />
+				<p:inputMask value="#{atualizar.pessoa.cpf}" required="true"
+					id="cpf" label="cpf" mask="999.999.999-99" />
 
-			<p:outputLabel value="E-mail:" />
-			<p:inputText value="#{atualizar.pessoa.email}" required="true"
-				label="email" id="email"
-				requiredMessage="Por favor entre com seu endereço de e-mail"
-				validatorMessage="Email inválido">
-				<f:validateRegex
-					pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
-			</p:inputText>
-		</p:panelGrid>
-		<hr />
-		<p:panelGrid columns="2">
-			<f:facet name="header">
-				<h:outputText value="Números de contato" />
-			</f:facet>
-			<h:outputLabel value="DDD:" for="numero" />
-			<p:inputText value="#{atualizar.ddd}"  id="ddd"
-				label="ddd">
-				<f:validateLength minimum="2" maximum="2" />
-			</p:inputText>
-			<h:outputLabel value="Número:" for="numero" />
-			<p:inputText value="#{atualizar.numero}" id="numero" label="numero">
-				<f:validateLength minimum="9" maximum="9" />
-			</p:inputText>
-			<p:commandButton value="Adicionar"
-				action="#{atualizar.adicionarTelefone}" update="list" />
+				<p:outputLabel value="Data de Nascimento:" />
+				<p:calendar id="mask" size="12"
+					value="#{atualizar.pessoa.dataNascimento}" pattern="dd/MM/yyyy" />
+
+				<p:outputLabel value="E-mail:" />
+				<p:inputText value="#{atualizar.pessoa.email}" required="true"
+					label="email" id="email"
+					requiredMessage="Por favor entre com seu endereço de e-mail"
+					validatorMessage="Email inválido">
+					<f:validateRegex
+						pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+				</p:inputText>
+			</p:panelGrid>
+			<hr />
+			<p:panelGrid columns="2">
+				<f:facet name="header">
+					<h:outputText value="Números de contato" />
+				</f:facet>
+				<h:outputLabel value="DDD:" for="numero" />
+				<p:inputText value="#{atualizar.ddd}" id="ddd" label="ddd">
+					<f:validateLength minimum="2" maximum="2" />
+				</p:inputText>
+				<h:outputLabel value="Número:" for="numero" />
+				<p:inputText value="#{atualizar.numero}" id="numero" label="numero">
+					<f:validateLength minimum="9" maximum="9" />
+				</p:inputText>
+				<p:commandButton value="Adicionar"
+					action="#{atualizar.adicionarTelefone}" update="list" />
 
 
-		</p:panelGrid>
-		<p:dataTable value="#{atualizar.telefoneList}" var="telefone"
-			border="1" cellspacing="0" cellpadding="2" id="list">
-			<p:column>
-				<f:facet name="header">DDD</f:facet>
-				<h:outputText value="#{telefone.ddd}" />
-			</p:column>
-			<p:column>
-				<f:facet name="header">Número</f:facet>
-				<h:outputText value="#{telefone.numero}" />
-			</p:column>
-			<p:column>
-				<f:facet name="header">Ações</f:facet>
-				<h:commandLink value="Deletar"
-					action="#{atualizar.selecionarLinha(telefone)}" />
-			</p:column>
+			</p:panelGrid>
+			<p:dataTable value="#{atualizar.telefoneList}" var="telefone"
+				border="1" cellspacing="0" cellpadding="2" id="list">
+				<p:column>
+					<f:facet name="header">DDD</f:facet>
+					<h:outputText value="#{telefone.ddd}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Número</f:facet>
+					<h:outputText value="#{telefone.numero}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Ações</f:facet>
+					<h:commandLink value="Deletar"
+						action="#{atualizar.selecionarLinha(telefone)}" />
+				</p:column>
 
-		</p:dataTable>
-		<p:commandButton value="Cadastrar" action="#{atualizar.atualizar}" update="@form"/>
-	</h:form>
-</h:body>
-</html>
+			</p:dataTable>
+			<p:commandButton value="Cadastrar" action="#{atualizar.atualizar}"
+				update="@form" />
+		</h:form>
+	</ui:define>
+</ui:composition>
