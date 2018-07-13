@@ -1,72 +1,71 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition template="WEB-INF/template/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<title>Listagem de Pessoas</title>
-</h:head>
-<h:body>
 
-	<p:messages id="messages" showDetail="true" closable="true">
-		<p:autoUpdate />
-	</p:messages>
-	<p:panelGrid columns="2">
-		<h:form>
-			<f:facet name="header">
-				<h:outputText value="Dados para cadastro" />
-			</f:facet>
-			<h:outputLabel value="Nome:" />
-			<p:inputText value="#{listar.nome}" />
-			<p:outputLabel value="Cpf:" />
-			<p:inputMask id="cpf"
-				label="cpf" mask="999.999.999-99" value="#{listar.cpf}" />
-			<p:commandButton value="Pesquisar" update="list"
-				action="#{listar.buscarPessoa}" />
+	<ui:define name="titulo">Listagem de Contatos</ui:define>
+	<ui:define name="corpo">
 
-			<p:commandLink value="Cadastrar" action="cadastro" />
-		</h:form>
-
-	</p:panelGrid>
-	<hr />
-	<p:dataTable value="#{listar.listarPessoa}" var="pessoa" border="1"
-		cellspacing="0" cellpadding="2" id="list">
-		<p:column>
-			<f:facet name="header">id</f:facet>
-			<h:outputText value="#{pessoa.id}" />
-		</p:column>
-		<p:column>
-			<f:facet name="header">Nome</f:facet>
-			<h:outputText value="#{pessoa.nome}" />
-		</p:column>
-		<p:column>
-			<f:facet name="header">CPF:</f:facet>
-			<h:outputText value="#{pessoa.cpf}" />
-		</p:column>
-		<p:column>
-			<f:facet name="header">idade:</f:facet>
-			<h:outputText value="#{listar.idadePessoa(pessoa)}" />
-		</p:column>
-		<p:column>
-			<f:facet name="header">Quantidade de telefone:</f:facet>
-			<h:outputText value="#{listar.sizeTel(pessoa)}" />
-		</p:column>
-
-		<p:column>
+		<p:messages id="messages" showDetail="true" closable="true">
+			<p:autoUpdate />
+		</p:messages>
+		<p:panelGrid columns="2">
 			<h:form>
-				<f:facet name="header">Ações</f:facet>
-				<p:commandLink value="Excluir" action="#{listar.excluir}"
-					update="list">
-					<f:setPropertyActionListener value="#{pessoa}"
-						target="#{listar.pessoaSelecio}" />
-				</p:commandLink>
+				<f:facet name="header">
+					<h:outputText value="Dados para cadastro" />
+				</f:facet>
+				<h:outputLabel value="Nome:" />
+				<p:inputText value="#{listar.nome}" />
+				<p:outputLabel value="Cpf:" />
+				<p:inputMask id="cpf" label="cpf" mask="999.999.999-99"
+					value="#{listar.cpf}" />
+				<p:commandButton value="Pesquisar" update="list"
+					action="#{listar.buscarPessoa}" />
+
+				<p:commandLink value="Cadastrar" action="cadastro" />
+			</h:form>
+
+		</p:panelGrid>
+		<hr />
+		<p:dataTable value="#{listar.listarPessoa}" var="pessoa" border="1"
+			cellspacing="0" cellpadding="2" id="list">
+			<p:column>
+				<f:facet name="header">id</f:facet>
+				<h:outputText value="#{pessoa.id}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">Nome</f:facet>
+				<h:outputText value="#{pessoa.nome}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">CPF:</f:facet>
+				<h:outputText value="#{pessoa.cpf}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">idade:</f:facet>
+				<h:outputText value="#{listar.idadePessoa(pessoa)}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">Quantidade de telefone:</f:facet>
+				<h:outputText value="#{listar.sizeTel(pessoa)}" />
+			</p:column>
+			<p:column>
+				<h:form>
+					<f:facet name="header">Ações</f:facet>
+					<p:commandLink value="Excluir" action="#{listar.excluir}"
+						update="list">
+						<f:setPropertyActionListener value="#{pessoa}"
+							target="#{listar.pessoaSelecio}" />
+					</p:commandLink>
 				|
 				<p:commandLink value="alterar" action="#{atualizar.Alterar}">
-					<f:setPropertyActionListener value="#{pessoa.id}"
-						target="#{atualizar.idSelecionado}" />
-				</p:commandLink>
-			</h:form>
-		</p:column>
-	</p:dataTable>
-</h:body>
-</html>
+						<f:setPropertyActionListener value="#{pessoa.id}"
+							target="#{atualizar.idSelecionado}" />
+					</p:commandLink>
+				</h:form>
+			</p:column>
+		</p:dataTable>
+	</ui:define>
+</ui:composition>
