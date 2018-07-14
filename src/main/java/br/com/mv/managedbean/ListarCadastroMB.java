@@ -14,6 +14,7 @@ import br.com.mv.dao.Cadastro;
 import br.com.mv.dao.CadastroDAOimp;
 import br.com.mv.model.Pessoa;
 import br.com.mv.model.Telefone;
+import br.com.mv.utils.Util;
 
 @ManagedBean(name = "listar")
 @ViewScoped
@@ -87,6 +88,7 @@ public class ListarCadastroMB implements Serializable {
 		cadastroDao = new CadastroDAOimp();
 		try {
 			cadastroDao.excluirPessoa(pessoaSelecio);
+			Util.setMensagem("Contato Excluido!", "Todos os dados foram exluídos!");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
