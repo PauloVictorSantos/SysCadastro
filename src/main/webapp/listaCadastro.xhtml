@@ -11,20 +11,20 @@
 		<p:messages id="messages" showDetail="true" closable="true">
 			<p:autoUpdate />
 		</p:messages>
-		<p:panelGrid columns="2">
+		<p:panelGrid columns="5" layout="grid">
 			<h:form>
 				<f:facet name="header">
 					<h:outputText value="Dados para cadastro" />
 				</f:facet>
+
 				<h:outputLabel value="Nome:" />
 				<p:inputText value="#{listar.nome}" />
 				<p:outputLabel value="Cpf:" />
 				<p:inputMask id="cpf" label="cpf" mask="999.999.999-99"
 					value="#{listar.cpf}" />
-				<p:commandButton value="Pesquisar" icon="ui-icon-search" update="list"
-					action="#{listar.buscarPessoa}" />
+				<p:commandButton value="Pesquisar" icon="ui-icon-search"
+					update="list" action="#{listar.buscarPessoa}" />
 
-				<p:commandLink value="Cadastrar" action="cadastro" />
 			</h:form>
 
 		</p:panelGrid>
@@ -54,13 +54,14 @@
 			<p:column>
 				<h:form>
 					<f:facet name="header">Ações:</f:facet>
-					<p:commandButton icon="ui-icon-trash" title="Excluir" action="#{listar.excluir}"
-						update="list">
+					<p:commandButton icon="ui-icon-trash" title="Excluir"
+						action="#{listar.excluir}" update="list">
 						<f:setPropertyActionListener value="#{pessoa}"
 							target="#{listar.pessoaSelecio}" />
 					</p:commandButton>
 				|
-				<p:commandButton title="alterar"  icon="ui-icon-pencil" action="#{atualizar.Alterar}">
+				<p:commandButton title="alterar" icon="ui-icon-pencil"
+						action="#{atualizar.Alterar}">
 						<f:setPropertyActionListener value="#{pessoa.id}"
 							target="#{atualizar.idSelecionado}" />
 					</p:commandButton>
