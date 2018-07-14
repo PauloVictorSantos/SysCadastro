@@ -42,15 +42,15 @@
 					<h:outputText value="Números de contato" />
 				</f:facet>
 				<h:outputLabel value="DDD:" for="numero" />
-				<p:inputText value="#{atualizar.ddd}" id="ddd" label="ddd">
+				<p:inputText value="#{atualizar.ddd}" id="ddd" label="ddd" >
 					<f:validateLength minimum="2" maximum="2" />
 				</p:inputText>
 				<h:outputLabel value="Número:" for="numero" />
 				<p:inputText value="#{atualizar.numero}" id="numero" label="numero">
 					<f:validateLength minimum="9" maximum="9" />
 				</p:inputText>
-				<p:commandButton value="Adicionar"
-					action="#{atualizar.adicionarTelefone}" update="list" />
+				<p:commandButton title="Adicionar" icon="ui-icon-plus" 
+					action="#{atualizar.adicionarTelefone}" update="list"  process="@this,ddd,numero" />
 
 
 			</p:panelGrid>
@@ -66,12 +66,12 @@
 				</p:column>
 				<p:column>
 					<f:facet name="header">Ações</f:facet>
-					<h:commandLink value="Deletar"
-						action="#{atualizar.selecionarLinha(telefone)}" />
+					<p:commandButton  title="Deletar" icon="ui-icon-minus"
+						action="#{atualizar.selecionarLinha(telefone)}" update="list"  process="@this"  />
 				</p:column>
 
 			</p:dataTable>
-			<p:commandButton value="Cadastrar" action="#{atualizar.atualizar}"
+			<p:commandButton value="Cadastrar" icon="ui-icon-disk" action="#{atualizar.atualizar}"
 				update="@form" />
 		</h:form>
 	</ui:define>
