@@ -21,7 +21,7 @@
 				<p:outputLabel value="Cpf:" />
 				<p:inputMask id="cpf" label="cpf" mask="999.999.999-99"
 					value="#{listar.cpf}" />
-				<p:commandButton value="Pesquisar" update="list"
+				<p:commandButton value="Pesquisar" icon="ui-icon-search" update="list"
 					action="#{listar.buscarPessoa}" />
 
 				<p:commandLink value="Cadastrar" action="cadastro" />
@@ -40,30 +40,30 @@
 				<h:outputText value="#{pessoa.nome}" />
 			</p:column>
 			<p:column>
-				<f:facet name="header">CPF:</f:facet>
+				<f:facet name="header">CPF</f:facet>
 				<h:outputText value="#{pessoa.cpf}" />
 			</p:column>
 			<p:column>
-				<f:facet name="header">idade:</f:facet>
+				<f:facet name="header">idade</f:facet>
 				<h:outputText value="#{listar.idadePessoa(pessoa)}" />
 			</p:column>
 			<p:column>
-				<f:facet name="header">Quantidade de telefone:</f:facet>
+				<f:facet name="header">Quantidade de telefone</f:facet>
 				<h:outputText value="#{listar.sizeTel(pessoa)}" />
 			</p:column>
 			<p:column>
 				<h:form>
-					<f:facet name="header">Ações</f:facet>
-					<p:commandLink value="Excluir" action="#{listar.excluir}"
+					<f:facet name="header">Ações:</f:facet>
+					<p:commandButton icon="ui-icon-trash" title="Excluir" action="#{listar.excluir}"
 						update="list">
 						<f:setPropertyActionListener value="#{pessoa}"
 							target="#{listar.pessoaSelecio}" />
-					</p:commandLink>
+					</p:commandButton>
 				|
-				<p:commandLink value="alterar" action="#{atualizar.Alterar}">
+				<p:commandButton title="alterar"  icon="ui-icon-pencil" action="#{atualizar.Alterar}">
 						<f:setPropertyActionListener value="#{pessoa.id}"
 							target="#{atualizar.idSelecionado}" />
-					</p:commandLink>
+					</p:commandButton>
 				</h:form>
 			</p:column>
 		</p:dataTable>
