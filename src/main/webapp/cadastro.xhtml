@@ -38,7 +38,7 @@
 					<h:outputText value="Números de contato" />
 				</f:facet>
 				<h:outputLabel value="DDD:" for="numero" />
-				<p:inputText value="#{cadastro.ddd}" id="ddd" label="ddd">
+				<p:inputText value="#{cadastro.ddd}" id="ddd" label="ddd" required="true">
 					<f:validateLength minimum="2" maximum="2" />
 				</p:inputText>
 				<h:outputLabel value="Número:" for="numero" />
@@ -47,8 +47,8 @@
 					requiredMessage="Por favor entre com um número de telefone">
 					<f:validateLength minimum="9" maximum="9" />
 				</p:inputText>
-				<p:commandButton value="Adicionar"
-					actionListener="#{cadastro.adicionarTelefone}" update="list" />
+				<p:commandButton title="Adicionar" icon="ui-icon-plus" 
+					actionListener="#{cadastro.adicionarTelefone}" update="list"  process="@this,ddd,numero" />
 			</p:panelGrid>
 
 			<p:dataTable value="#{cadastro.telefoneList}" var="telefone"
@@ -63,14 +63,14 @@
 				</p:column>
 				<p:column>
 					<f:facet name="header">Ações</f:facet>
-					<h:commandLink value="Deletar"
-						action="#{cadastro.selecionarLinha(telefone)}" />
+					<p:commandButton  title="Deletar" icon="ui-icon-minus"
+						action="#{cadastro.selecionarLinha(telefone)}" update="list"  process="@this"   />
 				</p:column>
 			</p:dataTable>
-			<p:commandButton value="Cadastrar"
+			<p:commandButton value="Cadastrar" icon="ui-icon-disk" 
 				actionListener="#{cadastro.salvar}" update="@form" />
 			<p:commandButton value="limpar" actionListener="#{cadastro.limpar}"
-				update="@form" process="@all" />
+				update="@form" process="@all" icon="ui-icon-refresh"  />
 		</h:form>
 	</ui:define>
 </ui:composition>
