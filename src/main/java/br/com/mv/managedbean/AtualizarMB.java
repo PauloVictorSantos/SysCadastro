@@ -1,11 +1,13 @@
 package br.com.mv.managedbean;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import br.com.mv.dao.Cadastro;
 import br.com.mv.dao.CadastroDAOimp;
@@ -91,7 +93,7 @@ public class AtualizarMB implements Serializable {
 	public void selecionarLinha(Telefone telefone) {
 		telefoneList.remove(telefone);
 	}
-	
+
 	public String Alterar() {
 		System.out.println(this.getIdSelecionado());
 		// System.out.println(" di pessoa " + pessoa.getId());
@@ -117,12 +119,14 @@ public class AtualizarMB implements Serializable {
 		System.out.println(this.getIdSelecionado() + " di pessoa " + p.getId());
 		return "atualizar?faces-redirect=true";
 	}
-	public void atualizar(){
-		
-			cadastroDao.alterarPessoa(pessoa);
-			Util.setMensagem("Alterados!", "Dados alterados!");
-			this.pessoa = new Pessoa();
-			telefoneList = new ArrayList<>();
-		
+
+	public void atualizar() throws InterruptedException, IOException{
+
+		cadastroDao.alterarPessoa(pessoa);
+		Util.setMensagem("Alterados!", "Dados alterados!");
+		this.pessoa = new Pessoa();
+		telefoneList = new ArrayList<>();
+		Thread.sleep(1000);
+		FacesContext.getCurrentInstance().getExternalContext().redirect("listaCadastro.xhtml");
 	}
 }
