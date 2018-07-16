@@ -88,7 +88,7 @@ public class ListarCadastroMB implements Serializable {
 		cadastroDao = new CadastroDAOimp();
 		try {
 			cadastroDao.excluirPessoa(pessoaSelecio);
-			Util.setMensagem("Contato Excluido!", "Todos os dados foram exluídos!");
+			Util.setMensagem("Contato Excluido!", "Todos os dados foram excluídos!");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

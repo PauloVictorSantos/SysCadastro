@@ -126,7 +126,5 @@ public class AtualizarMB implements Serializable {
 		Util.setMensagem("Alterados!", "Dados alterados!");
 		this.pessoa = new Pessoa();
 		telefoneList = new ArrayList<>();
-		Thread.sleep(1000);
-		FacesContext.getCurrentInstance().getExternalContext().redirect("listaCadastro.xhtml");
 	}
 }
