@@ -120,11 +120,14 @@ public class AtualizarMB implements Serializable {
 		return "atualizar?faces-redirect=true";
 	}
 
-	public void atualizar() throws InterruptedException, IOException{
+	public void atualizar(){
 
 		cadastroDao.alterarPessoa(pessoa);
 		Util.setMensagem("Alterados!", "Dados alterados!");
 		this.pessoa = new Pessoa();
+		this.setDdd("");
+		this.setNumero("");
+		telefone = new Telefone();
 		telefoneList = new ArrayList<>();
 	}
 }
