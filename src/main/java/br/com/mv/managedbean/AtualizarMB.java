@@ -120,7 +120,7 @@ public class AtualizarMB implements Serializable {
 		return "atualizar?faces-redirect=true";
 	}
 
-	public void atualizar(){
+	public void atualizar() {
 
 		cadastroDao.alterarPessoa(pessoa);
 		Util.setMensagem("Alterados!", "Dados alterados!");
