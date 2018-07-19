@@ -3,9 +3,14 @@ package br.com.mv.managedbean;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+
+import org.hibernate.loader.plan.build.internal.returns.CollectionFetchableElementCompositeGraph;
 
 import br.com.mv.dao.Cadastro;
 import br.com.mv.dao.CadastroDAOimp;
@@ -75,7 +80,7 @@ public class ListarCadastroMB implements Serializable {
 	public List<Pessoa> getlistarPessoa() {
 		cadastroDao = new CadastroDAOimp();
 		if (this.getNome() == null || this.getCpf() == null)
-			return cadastroDao.listarPessoa();
+			return cadastroDao.listarPessoa().stream().filter(n->getCpf()!=null).collect(Collectors.toList());
 		pessoa.setNome(this.getNome());
 		pessoa.setCpf(this.getCpf());
 		return cadastroDao.procurarPessoa(pessoa);
