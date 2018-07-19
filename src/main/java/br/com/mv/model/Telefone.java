@@ -39,7 +39,7 @@ public class Telefone implements Serializable {
 		this.id = id;
 	}
 
-	@Column(length = 3, nullable = false)
+	@Column(length = 3, nullable = true)
 	public String getDdd() {
 		return ddd;
 	}
@@ -48,7 +48,7 @@ public class Telefone implements Serializable {
 		this.ddd = ddd;
 	}
 
-	@Column(length = 10, nullable = false)
+	@Column(length = 10, nullable = true)
 	public String getNumero() {
 		return numero;
 	}

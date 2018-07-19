@@ -38,12 +38,12 @@
 					<h:outputText value="Números de contato" />
 				</f:facet>
 				<h:outputLabel value="DDD:" for="numero" />
-				<p:inputText value="#{cadastro.ddd}" id="ddd" label="ddd" required="true">
+				<p:inputText value="#{cadastro.ddd}" id="ddd" label="ddd" >
 					<f:validateLength minimum="2" maximum="2" />
 				</p:inputText>
 				<h:outputLabel value="Número:" for="numero" />
 				<p:inputText value="#{cadastro.numero}" id="numero" label="numero"
-					required="true"
+					
 					requiredMessage="Por favor entre com um número de telefone">
 					<f:validateLength minimum="9" maximum="9" />
 				</p:inputText>
