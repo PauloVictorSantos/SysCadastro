@@ -3,10 +3,12 @@ package br.com.mv.managedbean;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.persistence.criteria.Predicate;
 
 import br.com.mv.dao.Cadastro;
 import br.com.mv.dao.CadastroDAOimp;
@@ -76,10 +78,13 @@ public class ListarCadastroMB implements Serializable {
 	public List<Pessoa> getlistarPessoa() {
 		cadastroDao = new CadastroDAOimp();
 		if (this.getNome() == null || this.getCpf() == null)
-			return cadastroDao.listarPessoa().stream().filter(n -> getCpf() != null).collect(Collectors.toList());
+			return cadastroDao.listarPessoa().stream().filter(
+			n->Objects.equals(n.getCpf(),"")?false:true
+							).collect(Collectors.toList()
+									);
 		pessoa.setNome(this.getNome());
 		pessoa.setCpf(this.getCpf());
-		return cadastroDao.procurarPessoa(pessoa).stream().filter(n -> getCpf() != null).collect(Collectors.toList());
+		return cadastroDao.procurarPessoa(pessoa).stream().filter(n->Objects.equals(n.getCpf(),"")?false:true).collect(Collectors.toList());
 	}
 
 	public void excluir() {
