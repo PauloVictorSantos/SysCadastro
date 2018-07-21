@@ -25,7 +25,7 @@ public class CadastroMB implements Serializable {
 	private String ddd;
 	private String numero;
 	List<Telefone> telefoneList = new ArrayList<>();
-	private Cadastro cadastroDao;
+	private Cadastro cadastroDao = new CadastroDAOimp();
 	private Pessoa pessoaSelecio;
 	private Long idSelecionado;
 	private Pessoa p;
@@ -103,7 +103,7 @@ public class CadastroMB implements Serializable {
 	}
 
 	public void salvar() {
-		cadastroDao = new CadastroDAOimp();
+	
 		pessoa.setTelefone(telefoneList);
 
 		if (pessoa.getId() == null) {

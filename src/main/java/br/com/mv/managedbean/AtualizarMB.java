@@ -25,7 +25,7 @@ public class AtualizarMB implements Serializable {
 
 	private Telefone telefone;
 	private Long idSelecionado;
-	private Cadastro cadastroDao;
+	private Cadastro cadastroDao = new CadastroDAOimp();
 	private Pessoa pessoa;
 	List<Telefone> telefoneList = new ArrayList<>();
 	private String ddd;
@@ -97,7 +97,7 @@ public class AtualizarMB implements Serializable {
 	public String Alterar() {
 		System.out.println(this.getIdSelecionado());
 		// System.out.println(" di pessoa " + pessoa.getId());
-		cadastroDao = new CadastroDAOimp();
+		
 		Pessoa p = cadastroDao.pegarPessoa(this.getIdSelecionado());
 
 		if (p != null) {
@@ -116,7 +116,7 @@ public class AtualizarMB implements Serializable {
 			}
 			this.pessoa.setTelefone(telefoneList);
 		}
-		System.out.println(this.getIdSelecionado() + " di pessoa " + p.getId());
+	//	System.out.println(this.getIdSelecionado() + " di pessoa " + p.getId());
 		return "atualizar?faces-redirect=true";
 	}
 

@@ -26,7 +26,7 @@ public class ListarCadastroMB implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Pessoa pessoa;
 	private Telefone telefone;
-	private Cadastro cadastroDao;
+	private Cadastro cadastroDao= new CadastroDAOimp();
 	private Pessoa pessoaSelecio;
 	private String nome;
 	private String cpf;
@@ -76,7 +76,6 @@ public class ListarCadastroMB implements Serializable {
 	}
 
 	public List<Pessoa> getlistarPessoa() {
-		cadastroDao = new CadastroDAOimp();
 		if (this.getNome() == null || this.getCpf() == null)
 			return cadastroDao.listarPessoa().stream().filter(
 			n->Objects.equals(n.getCpf(),"")?false:true
@@ -88,7 +87,7 @@ public class ListarCadastroMB implements Serializable {
 	}
 
 	public void excluir() {
-		cadastroDao = new CadastroDAOimp();
+		
 		try {
 			cadastroDao.excluirPessoa(pessoaSelecio);
 			Util.setMensagem("Contato Excluido!", "Todos os dados foram excluídos!");
