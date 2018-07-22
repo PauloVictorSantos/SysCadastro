@@ -1,4 +1,4 @@
-package br.com.mv.model;
+package br.com.nextln.model;
 
 import java.io.Serializable;
 

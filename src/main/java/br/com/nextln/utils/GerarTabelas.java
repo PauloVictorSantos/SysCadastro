@@ -1,8 +1,9 @@
-package br.com.mv.utils;
+package br.com.nextln.utils;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import br.com.mv.model.Pessoa;
+
+import br.com.nextln.model.Pessoa;
 
 public class GerarTabelas {
 

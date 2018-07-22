@@ -1,8 +1,8 @@
-package br.com.mv.dao;
+package br.com.nextln.dao;
 
 
-import br.com.mv.model.Pessoa;
-import br.com.mv.model.Telefone;
+import br.com.nextln.model.Pessoa;
+import br.com.nextln.model.Telefone;
 
 public class Tests {
 

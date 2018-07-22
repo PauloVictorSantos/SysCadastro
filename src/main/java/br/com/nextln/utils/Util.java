@@ -1,4 +1,4 @@
-package br.com.mv.utils;
+package br.com.nextln.utils;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;

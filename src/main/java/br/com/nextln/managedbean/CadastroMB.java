@@ -1,4 +1,4 @@
-package br.com.mv.managedbean;
+package br.com.nextln.managedbean;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -7,11 +7,11 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import br.com.mv.dao.Cadastro;
-import br.com.mv.dao.CadastroDAOimp;
-import br.com.mv.model.Pessoa;
-import br.com.mv.model.Telefone;
-import br.com.mv.utils.Util;
+import br.com.nextln.dao.Cadastro;
+import br.com.nextln.dao.CadastroDAOimp;
+import br.com.nextln.model.Pessoa;
+import br.com.nextln.model.Telefone;
+import br.com.nextln.utils.Util;
 
 @ManagedBean(name = "cadastro")
 @ViewScoped

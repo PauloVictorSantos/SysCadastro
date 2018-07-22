@@ -1,4 +1,4 @@
-package br.com.mv.utils;
+package br.com.nextln.utils;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 

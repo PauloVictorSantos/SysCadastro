@@ -1,4 +1,4 @@
-package br.com.mv.managedbean;
+package br.com.nextln.managedbean;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 
-import br.com.mv.model.Telefone;
+import br.com.nextln.model.Telefone;
 
 @ManagedBean(name="name")
 @ViewScoped

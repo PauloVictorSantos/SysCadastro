@@ -1,4 +1,4 @@
-package br.com.mv.dao;
+package br.com.nextln.dao;
 
 import java.util.List;
 
@@ -6,9 +6,9 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import br.com.mv.model.Pessoa;
-import br.com.mv.model.Telefone;
-import br.com.mv.utils.HibernateUtil;
+import br.com.nextln.model.Pessoa;
+import br.com.nextln.model.Telefone;
+import br.com.nextln.utils.HibernateUtil;
 
 public class CadastroDAOimp implements Cadastro {
 	private Session session = null;

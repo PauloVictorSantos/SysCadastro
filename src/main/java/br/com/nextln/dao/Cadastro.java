@@ -1,9 +1,9 @@
-package br.com.mv.dao;
+package br.com.nextln.dao;
 
 import java.util.List;
 
-import br.com.mv.model.Pessoa;
-import br.com.mv.model.Telefone;
+import br.com.nextln.model.Pessoa;
+import br.com.nextln.model.Telefone;
 
 public interface Cadastro {
 	public boolean inserirCadastro(Telefone telefone, Pessoa pessoa);
