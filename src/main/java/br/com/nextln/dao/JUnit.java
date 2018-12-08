@@ -28,26 +28,36 @@ public class JUnit {
 		webClient.getOptions().setThrowExceptionOnScriptError(false);
 		
 		HtmlPage page = webClient.getPage("http://dv.parliament.bg/DVWeb/broeveList.faces");
+		HtmlAnchor link = (HtmlAnchor) page.getElementById("broi_form:dataTable1:0:_idJsp109");		
+		Page click = link.click();
+		
+		InputStream is = click.getWebResponse().getContentAsStream();
+        FileOutputStream output = new FileOutputStream("C:/Download/"+new Date().getTime()+".pdf");
+        
+        IOUtils.copy(is, output);
+        output.close();
 
-	    for (HtmlAnchor link : (List<HtmlAnchor>) page.getByXPath("//table[@id='broi_form:dataTable1']//a/img/.."))
-	    {
-	        String commandString = link.getOnClickAttribute().replaceAll("return ", "");
-	        System.out.println(commandString);
+        System.out.println("New file created!");     
 
-	        ScriptResult executeJavaScript = page.executeJavaScript(commandString);
-
-	        Page newPage = executeJavaScript.getNewPage();
-	        System.out.println(newPage.getWebResponse().getContentAsStream());
-	        
-	        InputStream is = newPage.getWebResponse().getContentAsStream();
-            FileOutputStream output = new FileOutputStream("C:/Download/"+new Date().getTime()+".pdf");
-	        
-            IOUtils.copy(is, output);
-            output.close();
-
-            System.out.println("New file created!");     
-	        page = webClient.getPage("http://dv.parliament.bg/DVWeb/broeveList.faces");
-	    }
+//	    for (HtmlAnchor link : (List<HtmlAnchor>) page.getByXPath("//table[@id='broi_form:dataTable1']//a/img/.."))
+//	    {
+//	        String commandString = link.getOnClickAttribute().replaceAll("return ", "");
+//	        System.out.println(commandString);
+//
+//	        ScriptResult executeJavaScript = page.executeJavaScript(commandString);
+//
+//	        Page newPage = executeJavaScript.getNewPage();
+//	        System.out.println(newPage.getWebResponse().getContentAsStream());
+//	        
+//	        InputStream is = newPage.getWebResponse().getContentAsStream();
+//            FileOutputStream output = new FileOutputStream("C:/Download/"+new Date().getTime()+".pdf");
+//	        
+//            IOUtils.copy(is, output);
+//            output.close();
+//
+//            System.out.println("New file created!");     
+//	        page = webClient.getPage("http://dv.parliament.bg/DVWeb/broeveList.faces");
+//	    }
 
 	}
          
